@@ -5,13 +5,14 @@ mod audio;
 mod loading;
 mod menu;
 mod player;
+mod eco;
 
 use crate::actions::ActionsPlugin;
 use crate::audio::InternalAudioPlugin;
 use crate::loading::LoadingPlugin;
 use crate::menu::MenuPlugin;
 use crate::player::PlayerPlugin;
-
+use crate::eco::EcoPlugin; 
 use bevy::app::App;
 #[cfg(debug_assertions)]
 use bevy::diagnostic::{FrameTimeDiagnosticsPlugin, LogDiagnosticsPlugin};
@@ -37,10 +38,11 @@ impl Plugin for GamePlugin {
     fn build(&self, app: &mut App) {
         app.add_state::<GameState>().add_plugins((
             LoadingPlugin,
-            MenuPlugin,
+            //MenuPlugin,
             ActionsPlugin,
             InternalAudioPlugin,
             PlayerPlugin,
+            EcoPlugin,
         ));
 
         #[cfg(debug_assertions)]
